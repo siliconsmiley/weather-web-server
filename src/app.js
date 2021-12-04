@@ -75,12 +75,6 @@ app.get('/weather', (req, res) => {
       })
     })
   })
-
-  // observationTime: body.current.observation_time,
-  //     temperature: body.current.temperature,
-  //     feelsLike: body.current.feelslike,
-  //     weatherIcon: body.current.weather_icons
-
 })
 
 app.get('/products', (req, res) => {
