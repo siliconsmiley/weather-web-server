@@ -23,32 +23,31 @@ app.use(express.static(pathPublic))
 
 app.get('', (req, res) => {
   res.render('index', {
-    title: 'super dynamic mellon farmer!',
+    title: 'Node JS Dynamic Weather App',
     name: 'siliconsmiley'
   })
 })
 
 app.get('/help', (req, res) => {
   res.render('help', {
-    title: 'Help Title',
+    title: 'Help',
     name: 'siliconsmiley',
-    helpTitle: "There's no way that you can save me",
-    itsOK: "It's OK go with him Haley"
+    itsOK: "This is fine"
   })
 })
 
 app.get('/about', (req, res) => {
   res.render('about', {
-    title: "what's this all a boot?",
+    title: "About",
     name: 'siliconsmiley',
-    moreAbout: 'more about nothing'
+    moreAbout: 'more about'
   })
 })
 
 app.get('/weather', (req, res) => {
   if (!req.query.address) {
     return res.send({
-      error: 'address query parameter required',
+      error: 'Please enter a location',
       example: req.protocol + ':' + '//' + req.hostname + req.url
           + '?address=baltimore'
     })
@@ -58,15 +57,10 @@ app.get('/weather', (req, res) => {
     if (error) {
       return res.send({error})
     }
-    console.log(latitude, longitude, address)
-    console.log('lat:', chalk.green(latitude),
-        'long:', chalk.green(longitude),
-        'address:', chalk.blue(address))
     weather(latitude, longitude, (error, weatherData) => {
       if (error) {
         return res.send({error})
       }
-      console.log(address, weatherData)
       res.send({
         location: address,
         time: weatherData.observationTime,
@@ -74,18 +68,6 @@ app.get('/weather', (req, res) => {
         feelslike: weatherData.feelsLike
       })
     })
-  })
-})
-
-app.get('/products', (req, res) => {
-  console.log(req.query)
-  if (!req.query.search) {
-    return res.send({
-      error: "FAIL! gimmie search"
-    })
-  }
-  res.send({
-    products: []
   })
 })
 
