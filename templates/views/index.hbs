@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/img/siliconsmiley.jpg">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <title>HBS Template</title>
+</head>
+<body>
+<div class="main-content">
+  {{>header}}
+  <p>{{name}}</p>
+
+  <form>
+    <input placeholder="Location">
+    <button>Search</button>
+  </form>
+  <p id = "error-message"></p>
+  <p id = "result-message"></p>
+
+</div>
+{{>footer}}
+<script src="/js/app.js"></script>
+</body>
+</html>
